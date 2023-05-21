@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--roboto);
+    font-size: 62.5%;
+}
+
+:root {
+    --roboto: 'Roboto', sans-serif;
+    --white: #dedede;
+    --whiteDE: #dedede;
+    --roxo: #B799FF;
+    --black21: #212121;
+    --bg-modal: #000000c7;
+    --bg-botao-modal: #00000090;
+    --tam-img-modal-wid: 90vw;
+    --tam-img-modal-hei: 90vh;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--black21);
+    display: flex;
+    flex-direction: column;
+    max-width: 1680px;
+    scroll-behavior: smooth;
+}
+
+body.modal-open::-webkit-scrollbar {
+    width: 0;
+}
+
+header {
+    background-color: var(--whiteDE);
+    padding: 10px 4%;
+    min-height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--black21);
+    font-size: 2.4rem;
+}
+
+.conta {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.conta .usuario {
+    color: var(--black21);
+    font-size: 1.6rem;
+}
+
+.conta .logout {
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logout i {
+    color: var(--black21);
+    font-size: 2.2rem;
+}
+
+main {
+    padding: 40px 4%;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+}
+
+.galeria {
+    width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-grow: 1;
+    gap: .8rem;
+}
+
+.galeria .coluna {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: all .6s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.image-container .imagem {
+    width: 100%;
+    object-fit: contain;
+    transition: all .4s ease;
+    border-radius: 5px;
+}
+
+.image-container:hover .imagem {
+    filter: blur(5px) brightness(0.6)
+}
+
+.image-container i {
+    position: absolute;
+    color: var(--whiteDE);
+    display: none;
+    font-size: 5rem;
+}
+
+.image-container:hover i {
+    display: flex;
+    animation: surgirLupa .4s;
+}
+
+.container-modal {
+    position: fixed;
+    background: var(--bg-modal);
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-modal.aberto {
+    display: flex;
+    animation: escurecerTela .4s;
+}
+
+.container-modal.fechado {
+    display: flex;
+    animation: desaparecerModal .5s;
+}
+
+.modal {
+    background-color: var(--black21);
+    position: relative;
+    border-radius: 3px;
+    animation: surgirModal .5s;
+    overflow: hidden;
+}
+
+.modal .imagem-modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-modal {
+    max-width: var(--tam-img-modal-wid);
+    max-height: var(--tam-img-modal-hei);
+    object-fit: contain;
+}
+
+.imagem-modal-container .fechar-modal {
+    background-color: var(--bg-botao-modal);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.imagem-modal-container .fechar-modal:hover {
+    background-color: var(--bg-modal);
+}
+
+.fechar-modal i {
+    color: gray;
+    font-size: 3rem;
+}
+
+@keyframes surgirLupa {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes surgirModal {
+    0% {
+        opacity: 0;
+        transform: translateY(50%) scale(0.6);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+    }
+}
+
+@keyframes desaparecerModal {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes escurecerTela {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media Screen and (max-width: 700px) {
+    .galeria {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .image-container .imagem {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .imagem-modal-container .fechar-modal {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+@media Screen and (max-width: 450px) {
+    header {
+        min-height: 5rem;
+    }
+
+    main {
+        padding: 20px 4%;
+    }
+
+    .image-container .imagem {
+        height: 150px;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .conta .usuario {
+        font-size: 1.4rem;
+    }
+
+    .conta i {
+        font-size: 1.8rem;
+    }
+
+    .imagem-modal-container .fechar-modal {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+@media Screen and (max-width: 350px) {
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .image-container .imagem{
+        height: auto;
+        object-fit: contain;
+    }
+}

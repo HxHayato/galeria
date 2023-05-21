@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <form method="post" class="form form-login aberto">
+            <h1 class="titulo">Login</h1>
+
+            <div class="container-campos">
+                <div class="form-group">
+                    <i class="bx bx-envelope"></i>
+                    <div class="input-group">
+                        <input type="email" name="email" id="loginEmail" required class="campo-input">
+                        <label for="loginEmail">Digite seu email</label>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <i class="bx bx-lock"></i>
+                    <div class="input-group">
+                        <input type="password" name="senha" id="loginSenha" class="campo-input" required>
+                        <label for="senha">Digite sua senha</label>
+                    </div>
+                </div>
+
+                <p class="aviso aviso-login">Email e/ou senha incorretos</p>
+            </div>
+
+            <button class="botao" id="btnLogin">Entrar</button>
+
+            <p class="txt-final">Ainda não é cadastrado? <em class="alterarLoginCadastro">Cadastre-se já!</em></p>
+        </form>
+
+        <form method="post" class="form form-cadastro">
+            <h1 class="titulo">Cadastro</h1>
+
+            <div class="container-campos">
+                <div class="form-group">
+                    <i class="bx bx-user"></i>
+                    <div class="input-group">
+                        <input type="text" name="username" id="cadastroUsername" class="campo-input" required>
+                        <label for="cadastroUsername">Digite seu username</label>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <i class="bx bx-envelope"></i>
+                    <div class="input-group">
+                        <input type="email" name="email" id="cadastroEmail" class="campo-input" required>
+                        <label for="cadastroEmail">Digite seu email</label>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <i class="bx bx-lock"></i>
+                    <div class="input-group">
+                        <input type="password" name="senha" id="cadastroSenha" class="campo-input" required>
+                        <label for="senha">Digite sua senha</label>
+                    </div>
+                </div>
+
+                <p class="aviso aviso-cadastro">Email já cadastrado</p>
+                <p class="aviso aviso-email-invalido">Formato de email inválido</p>
+            </div>
+
+            <button class="botao" id="btnCadastro">Cadastrar</button>
+
+            <p class="txt-final">Já tem conta? <em class="alterarLoginCadastro">Fazer login</em></p>
+        </form>
+    </div>
+
+    <div class="modal">
+        <p class="sucesso">Cadastrado com sucesso</p>
+    </div>
+
+    <script src="./src/js/script.js"></script>
+</body>
+</html>
