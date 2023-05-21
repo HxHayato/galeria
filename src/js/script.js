@@ -79,7 +79,7 @@ botaoLogin.addEventListener('click', e => {
             sessionStorage.setItem('email', usuario[0].email)
 
             try {
-                location.replace('../../galeria.html')
+                location.replace('galeria.html')
             } catch (error) {
                 throw error
             }
@@ -135,7 +135,7 @@ botaoCadastro.addEventListener('click', e => {
                     modal.classList.remove('aberto')
                     //Redirecionar para a galeria
                     try {
-                        location.replace('../../galeria.html')
+                        location.replace('galeria.html')
                     } catch (error) {
                         throw error
                     }
@@ -166,7 +166,7 @@ botaoCadastro.addEventListener('click', e => {
                 modal.classList.remove('aberto')
                 //Redirecionar para a galeria
                 try {
-                    location.replace('../../galeria.html')
+                    location.replace('galeria.html')
                 } catch (error) {
                     throw error
                 }

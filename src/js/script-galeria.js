@@ -1,7 +1,7 @@
 //Ao carregar, vai ver se já tem sessão. Se não tiver, será redirecionado
 if(!sessionStorage.getItem('usuario') && !sessionStorage.getItem('email')){
     try {
-        location.replace('../../index.html')
+        location.replace('index.html')
     } catch (error) {
         console.log(`Erro ao redirecionar: ${error}`);
     }
