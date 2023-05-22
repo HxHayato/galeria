@@ -21,7 +21,7 @@ btnLogout.addEventListener('click', () => {
     sessionStorage.removeItem('email')
 
     try {
-        location.replace('../../index.html')
+        location.replace('index.html')
     } catch (error) {
         console.log(`Erro ao redirecionar: ${error}`)
     }
