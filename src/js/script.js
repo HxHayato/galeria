@@ -1,7 +1,7 @@
 //Ao carregar, vai ver se já tem sessão, se tiver, já redireciona
 if(sessionStorage.getItem('usuario') && sessionStorage.getItem('email')){
     try {
-        location.replace('./galeria.html')
+        location.replace('galeria.html')
     } catch (error) {
         console.log(`Erro ao redirecionar: ${error}`);
     }
@@ -79,7 +79,7 @@ botaoLogin.addEventListener('click', e => {
             sessionStorage.setItem('email', usuario[0].email)
 
             try {
-                location.replace('./galeria.html')
+                location.replace('galeria.html')
             } catch (error) {
                 console.log(`Erro ao redirecionar: ${error}`);
             }
@@ -135,7 +135,7 @@ botaoCadastro.addEventListener('click', e => {
                     modal.classList.remove('aberto')
                     //Redirecionar para a galeria
                     try {
-                        location.replace('./galeria.html')
+                        location.replace('galeria.html')
                     } catch (error) {
                         console.log(`Erro ao redirecionar: ${error}`);
                     }
