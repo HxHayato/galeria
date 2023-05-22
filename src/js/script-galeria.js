@@ -3,7 +3,7 @@ if(!sessionStorage.getItem('usuario') && !sessionStorage.getItem('email')){
     try {
         location.replace('index.html')
     } catch (error) {
-        console.log(`Erro ao redirecionar: ${error}`);
+        console.log(`Erro ao redirecionar: ${error}`)
     }
 }
 
@@ -23,102 +23,87 @@ btnLogout.addEventListener('click', () => {
     try {
         location.replace('../../index.html')
     } catch (error) {
-        console.log(`Erro ao redirecionar: ${error}`);
+        console.log(`Erro ao redirecionar: ${error}`)
     }
 })
 
 //Pegar item clicado(imagem) para ver ela inteira
-const body = document.querySelector('body')
-let scrollPosition = 0
 const imagens = document.querySelectorAll('.image-container')
 
 imagens.forEach(imagem => {
     imagem.addEventListener('click', e => {
-        criarModal(e);
+        criarModal(e)
 
         //Fechar modal quando clicar no X
-        fecharModal();
+        adicionarOuvinteButton()
 
-        //Travar a mobilidade quando o modal estiver aberto
-        travarMobilidade()
+        //Fechar o modal quando clicar fora do modal
+        adicionarOuvinteContainerModal()
     })
 })
 
-function fecharModal() {
-    const btnFecharModal = document.querySelector('.fechar-modal');
+function adicionarOuvinteContainerModal() {
+    const containerModal = document.querySelector('.container-modal')
+    const modal = document.querySelector('.modal')
+
+    containerModal.addEventListener('click', (e) => {
+        if (!modal.contains(e.target)) {
+            fecharModal()
+        }
+    })
+}
+
+function adicionarOuvinteButton() {
+    const btnFecharModal = document.querySelector('.fechar-modal')
 
     btnFecharModal.addEventListener('click', () => {
-        const containerModal = document.querySelector('.container-modal');
-        const divModal = document.querySelector('.modal');
+        fecharModal()
+    })
+}
 
-        containerModal.classList.remove('aberto');
-        containerModal.classList.add('fechado');
-        destravarMobilidade()
+function fecharModal() {
+    const containerModal = document.querySelector('.container-modal')
+    const divModal = document.querySelector('.modal')
 
-        setTimeout(() => {
-            containerModal.classList.remove('fechado');
-            containerModal.removeChild(divModal);
-        }, 450);
-    });
+    containerModal.classList.remove('aberto')
+    containerModal.classList.add('fechado')
+
+    setTimeout(() => {
+        containerModal.classList.remove('fechado')
+        containerModal.removeChild(divModal)
+    }, 450)
 }
 
 function criarModal(e) {
-    const elemento = e.currentTarget;
-    const imgElemento = elemento.querySelector('.imagem');
+    const elemento = e.currentTarget
+    const imgElemento = elemento.querySelector('.imagem')
 
     //Criando o Modal
-    const containerModal = document.querySelector('.container-modal');
+    const containerModal = document.querySelector('.container-modal')
 
-    const modal = document.createElement('div');
-    modal.classList.add('modal');
-    containerModal.appendChild(modal);
+    const modal = document.createElement('div')
+    modal.classList.add('modal')
+    containerModal.appendChild(modal)
 
-    const modalImagem = document.createElement('div');
-    modalImagem.classList.add('imagem-modal-container');
-    modal.appendChild(modalImagem);
+    const modalImagem = document.createElement('div')
+    modalImagem.classList.add('imagem-modal-container')
+    modal.appendChild(modalImagem)
 
-    const imgModal = document.createElement('img');
-    imgModal.classList.add('imagem-modal');
+    const imgModal = document.createElement('img')
+    imgModal.classList.add('imagem-modal')
     imgModal.setAttribute('src', imgElemento.src)
     imgModal.setAttribute('alt', imgElemento.alt)
     modalImagem.appendChild(imgModal)
 
-    const buttonFecharModal = document.createElement('button');
-    buttonFecharModal.classList.add('fechar-modal');
-    buttonFecharModal.setAttribute('aria-label', 'Fechar Modal');
-    modalImagem.appendChild(buttonFecharModal);
+    const buttonFecharModal = document.createElement('button')
+    buttonFecharModal.classList.add('fechar-modal')
+    buttonFecharModal.setAttribute('aria-label', 'Fechar Modal')
+    modalImagem.appendChild(buttonFecharModal)
 
-    const icone = document.createElement('i');
-    icone.classList.add('bx');
-    icone.classList.add('bx-x');
-    buttonFecharModal.appendChild(icone);
+    const icone = document.createElement('i')
+    icone.classList.add('bx')
+    icone.classList.add('bx-x')
+    buttonFecharModal.appendChild(icone)
 
-    containerModal.classList.add('aberto');
-}
-
-function travarMobilidade() {
-    //Adiciona a classe que esconde o scroll padrão
-    body.classList.add('modal-open')
-    scrollPosition = window.pageYOffset || document.documentElement.scrollTop
-    body.style.top = `-${scrollPosition}px`
-
-    //Cancela o evento de rolagem no corpo
-    body.addEventListener('scroll', cancelarRolagem)
-    body.addEventListener('touchmove', cancelarRolagem);
-}
-
-function cancelarRolagem(event) {
-    event.preventDefault();
-    event.stopPropagation();
-}
-
-function destravarMobilidade () {
-    //Remove a classe que esconde o scroll padrão
-    body.classList.remove('modal-open');
-    body.style.top = '';
-    window.scrollTo(0, scrollPosition);
-
-    //Remove o tratador de eventos de rolagem
-    body.removeEventListener('scroll', cancelarRolagem);
-    body.removeEventListener('touchmove', cancelarRolagem);
+    containerModal.classList.add('aberto')
 }
