@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adicionar um ouvinte de evento de erro, se necessário
     bgImage.addEventListener('error', function () {
         console.error('Erro ao carregar a imagem de fundo.');
-        // Trate o erro, se necessário
+        loading.style.display = 'none';
     });
 
     // Definir o src da imagem para iniciar o carregamento
