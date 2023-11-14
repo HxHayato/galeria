@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Definir o src da imagem para iniciar o carregamento
-    bgImage.src = '../img/fundo.jpg';
+    bgImage.src = '../src/img/fundo.jpg';
 })
 
 const body = document.querySelector('body');
