@@ -9,25 +9,7 @@ if(sessionStorage.getItem('usuario') && sessionStorage.getItem('email')){
 
 //Sumindo com a tela do loading quando a imagem carregar
 document.addEventListener('DOMContentLoaded', () => {
-    const loading = document.querySelector('.loading');
-
-    //Criar a nova imagem
-    const bgImage = new Image ();
-
-    // Adicionar um ouvinte de evento de carregamento à imagem
-    bgImage.addEventListener('load', function () {
-        // Esconder a tela de loading quando a imagem de fundo for carregada
-        loading.style.display = 'none';
-    });
-
-    // Adicionar um ouvinte de evento de erro, se necessário
-    bgImage.addEventListener('error', function () {
-        console.error('Erro ao carregar a imagem de fundo.');
-        loading.style.display = 'none';
-    });
-
-    // Definir o src da imagem para iniciar o carregamento
-    bgImage.src = '../src/img/fundo.jpg';
+    loading.style.display = 'none';
 })
 
 const body = document.querySelector('body');
