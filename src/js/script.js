@@ -1,11 +1,38 @@
 //Ao carregar, vai ver se já tem sessão, se tiver, já redireciona
 if(sessionStorage.getItem('usuario') && sessionStorage.getItem('email')){
     try {
-        location.replace('galeria.html')
+        location.replace('./galeria.html')
     } catch (error) {
         console.log(`Erro ao redirecionar: ${error}`);
     }
 }
+
+//Sumindo com a tela do loading quando a imagem carregar
+document.addEventListener('DOMContentLoaded', () => {
+    const loading = document.querySelector('.loading');
+
+    //Criar a nova imagem
+    const bgImage = new Image ();
+
+    // Adicionar um ouvinte de evento de carregamento à imagem
+    bgImage.addEventListener('load', function () {
+        // Esconder a tela de loading quando a imagem de fundo for carregada
+        loading.style.display = 'none';
+    });
+
+    // Adicionar um ouvinte de evento de erro, se necessário
+    bgImage.addEventListener('error', function () {
+        console.error('Erro ao carregar a imagem de fundo.');
+        // Trate o erro, se necessário
+    });
+
+    // Definir o src da imagem para iniciar o carregamento
+    bgImage.src = '../src/img/fundo.jpg';
+})
+
+const body = document.querySelector('body');
+const loadingContainer = document.querySelector('.loading');
+
 
 //Alterar entre Login e Cadastro
 const formLogin = document.querySelector('.form-login')
@@ -79,7 +106,7 @@ botaoLogin.addEventListener('click', e => {
             sessionStorage.setItem('email', usuario[0].email)
 
             try {
-                location.replace('galeria.html')
+                location.replace('./galeria.html')
             } catch (error) {
                 console.log(`Erro ao redirecionar: ${error}`);
             }
@@ -135,7 +162,7 @@ botaoCadastro.addEventListener('click', e => {
                     modal.classList.remove('aberto')
                     //Redirecionar para a galeria
                     try {
-                        location.replace('galeria.html')
+                        location.replace('./galeria.html')
                     } catch (error) {
                         console.log(`Erro ao redirecionar: ${error}`);
                     }

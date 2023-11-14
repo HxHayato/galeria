@@ -7,6 +7,38 @@ if(!sessionStorage.getItem('usuario') && !sessionStorage.getItem('email')){
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Loading
+    const body = document.querySelector('body');
+    const image = document.querySelectorAll('.imagem');
+    var imagesLoaded = 0;
+
+    image.forEach(img => {
+        //Criar nova imagem
+        const novaImagem = new Image();
+
+        novaImagem.addEventListener('load', () => {
+            imagesLoaded++;
+
+            if(imagesLoaded === image.length){
+                //Permite que tenha scrollbar no body e remove a tela de loading
+                if(body.classList.contains('load')){
+                    body.classList.remove('load');
+                }
+                document.getElementById('loading').style.display = 'none';
+            }
+        });
+
+        // Adicione um ouvinte de evento de erro, se necessário
+        novaImagem.addEventListener('error', () => {
+            console.error('Erro ao carregar uma imagem.');
+        });
+
+        //Define o src para começar o carregamento
+        novaImagem.src = img.src;
+    });
+});
+
 //Nome do usuário no menu
 const p = document.querySelector('.usuario')
 const usuario  = sessionStorage.getItem('usuario')
